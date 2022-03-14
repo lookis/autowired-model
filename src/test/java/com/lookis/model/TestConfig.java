@@ -1,13 +1,13 @@
-package com.kuaishou.model;
+package com.lookis.model;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
- * @author 敬思 <liujingsi@kuaishou.com>
+ * @author 敬思 <lookisliu@gmail.com>
  * Created on 2022-03-14
  */
 @SpringBootConfiguration
-@ComponentScan("com.kuaishou.model")
+@ComponentScan("com.lookis.model")
 public class TestConfig {
 }

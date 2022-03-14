@@ -1,4 +1,4 @@
-package com.kuaishou.model.demo.reco;
+package com.lookis.model.demo.reco;
 
 import java.util.Collection;
 import java.util.Map;
@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.kuaishou.model.autowire.AttributeProvider;
-import com.kuaishou.model.demo.FeedModel;
+import com.lookis.model.autowire.AttributeProvider;
+import com.lookis.model.demo.FeedModel;
 
 /**
- * @author 敬思 <liujingsi@kuaishou.com>
+ * @author 敬思 <lookisliu@gmail.com>
  * Created on 2022-03-14
  */
 @Service

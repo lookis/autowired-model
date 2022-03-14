@@ -1,7 +1,7 @@
-package com.kuaishou.model.demo;
+package com.lookis.model.demo;
 
 /**
- * @author 敬思 <liujingsi@kuaishou.com>
+ * @author 敬思 <lookisliu@gmail.com>
  * Created on 2022-03-14
  */
 public class FeedModel {

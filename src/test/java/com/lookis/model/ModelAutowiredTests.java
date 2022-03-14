@@ -1,16 +1,16 @@
-package com.kuaishou.model;
+package com.lookis.model;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
-import com.kuaishou.model.autowire.Autowiring;
-import com.kuaishou.model.demo.FeedModel;
-import com.kuaishou.model.demo.FeedView;
+import com.lookis.model.autowire.Autowiring;
+import com.lookis.model.demo.FeedModel;
+import com.lookis.model.demo.FeedView;
 
 /**
- * @author 敬思 <liujingsi@kuaishou.com>
+ * @author 敬思 <lookisliu@gmail.com>
  * Created on 2022-03-14
  */
 @SpringBootTest

@@ -1,4 +1,4 @@
-package com.kuaishou.model.autowire;
+package com.lookis.model.autowire;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
@@ -21,7 +21,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 
 /**
- * @author 敬思 <liujingsi@kuaishou.com>
+ * @author 敬思 <lookisliu@gmail.com>
  * Created on 2022-03-14
  */
 @Service

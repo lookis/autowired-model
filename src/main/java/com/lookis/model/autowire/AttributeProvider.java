@@ -1,11 +1,11 @@
-package com.kuaishou.model.autowire;
+package com.lookis.model.autowire;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
 /**
- * @author 敬思 <liujingsi@kuaishou.com>
+ * @author 敬思 <lookisliu@gmail.com>
  * Created on 2022-03-14
  */
 public interface AttributeProvider<Model, Attribute> {
