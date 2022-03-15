@@ -5,9 +5,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.BeansException;
@@ -32,6 +34,14 @@ public class Autowiring implements ApplicationContextAware {
 
     private Cache<Object, Map<AttributeProvider, Object>> cached = CacheBuilder.newBuilder().weakKeys().build();
 
+    public <Model> List<AttributeProvider<Model, ?>> keys(Class<Model> clz) {
+        String[] names =
+                ctx.getBeanNamesForType(
+                        ResolvableType.forClassWithGenerics(AttributeProvider.class,
+                                ResolvableType.forClass(clz), null));
+        return Arrays.stream(names).map(beanName -> ctx.getBean(beanName, AttributeProvider.class))
+                .collect(Collectors.toList());
+    }
 
     public <Model> void setter(Collection<Model> models) {
         if (models == null || models.isEmpty()) {
@@ -62,9 +72,8 @@ public class Autowiring implements ApplicationContextAware {
 
     public <Model> void setter(Model model) {
         String[] names =
-                ctx.getBeanNamesForType(
-                        ResolvableType.forClassWithGenerics(AttributeProvider.class,
-                                ResolvableType.forClass(model.getClass()), null));
+                ctx.getBeanNamesForType(ResolvableType.forClassWithGenerics(AttributeProvider.class,
+                        ResolvableType.forClass(model.getClass()), null));
         Arrays.stream(names).forEach(beanName -> {
             AttributeProvider modelInjector = ctx.getBean(beanName, AttributeProvider.class);
             try {
@@ -99,9 +108,8 @@ public class Autowiring implements ApplicationContextAware {
                                 ResolvableType.forClass(model.getClass()), null));
         Map<String, Object> basedBean = new HashMap<>();
         try {
-            Map<String, String> based = BeanUtils.describe(model);
-            BeanUtils.copyProperties(basedBean, based);
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            BeanUtils.copyProperties(basedBean, model);
+        } catch (IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
             return null;
         }

@@ -19,4 +19,5 @@ public interface AttributeProvider<Model, Attribute> {
     }
 
     Map<Model, Attribute> resolve(Collection<Model> models);
+
 }
