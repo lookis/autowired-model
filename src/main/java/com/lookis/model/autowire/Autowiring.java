@@ -110,8 +110,8 @@ public class Autowiring implements ApplicationContextAware {
                                 ResolvableType.forClass(model.getClass()), null));
         Map<String, Object> basedBean = new HashMap<>();
         try {
-            BeanUtils.copyProperties(basedBean, model);
-        } catch (IllegalAccessException | InvocationTargetException e) {
+            basedBean.putAll(BeanUtils.describe(model));
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             e.printStackTrace();
             return null;
         }
