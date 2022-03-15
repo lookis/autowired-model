@@ -34,13 +34,15 @@ public class Autowiring implements ApplicationContextAware {
 
     private Cache<Object, Map<AttributeProvider, Object>> cached = CacheBuilder.newBuilder().weakKeys().build();
 
-    public <Model> List<AttributeProvider<Model, ?>> keys(Class<Model> clz) {
+    public <Model> List<AttributeProvider> keys(Class<Model> clz) {
         String[] names =
                 ctx.getBeanNamesForType(
                         ResolvableType.forClassWithGenerics(AttributeProvider.class,
                                 ResolvableType.forClass(clz), null));
-        return Arrays.stream(names).map(beanName -> ctx.getBean(beanName, AttributeProvider.class))
-                .collect(Collectors.toList());
+        List<AttributeProvider> providers =
+                Arrays.stream(names).map(beanName -> ctx.getBean(beanName, AttributeProvider.class))
+                        .collect(Collectors.toList());
+        return providers;
     }
 
     public <Model> void setter(Collection<Model> models) {
